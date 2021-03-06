@@ -35,40 +35,56 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ValheimBetterServerConfig\Libraries\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\Libraries\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="assembly_guiutils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ValheimBetterServerConfig\Libraries\assembly_guiutils.dll</HintPath>
+    <Reference Include="assembly_googleanalytics">
+      <HintPath>..\..\Libraries\assembly_googleanalytics.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="assembly_utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ValheimBetterServerConfig\Libraries\assembly_utils.dll</HintPath>
+    <Reference Include="assembly_guiutils">
+      <HintPath>..\..\Libraries\assembly_guiutils.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="assembly_valheim, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ValheimBetterServerConfig\Libraries\assembly_valheim.dll</HintPath>
+    <Reference Include="assembly_lux">
+      <HintPath>..\..\Libraries\assembly_lux.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="BepInEx, Version=5.4.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ValheimBetterServerConfig\Libraries\BepInEx.dll</HintPath>
+    <Reference Include="assembly_postprocessing">
+      <HintPath>..\..\Libraries\assembly_postprocessing.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ValheimBetterServerConfig\Libraries\UnityEngine.dll</HintPath>
+    <Reference Include="assembly_simplemeshcombine">
+      <HintPath>..\..\Libraries\assembly_simplemeshcombine.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ValheimBetterServerConfig\Libraries\UnityEngine.CoreModule.dll</HintPath>
+    <Reference Include="assembly_steamworks">
+      <HintPath>..\..\Libraries\assembly_steamworks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="assembly_sunshafts">
+      <HintPath>..\..\Libraries\assembly_sunshafts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="assembly_utils">
+      <HintPath>..\..\Libraries\assembly_utils.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="assembly_valheim">
+      <HintPath>..\..\Libraries\assembly_valheim.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\Libraries\BepInEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\Libraries\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\Libraries\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

@@ -2,8 +2,6 @@
 using BepInEx.Configuration;
 using HarmonyLib;
 using System;
-using System.Reflection;
-using UnityEngine;
 
 namespace FermenterPercentage
 {
@@ -39,7 +37,7 @@ namespace FermenterPercentage
                         string contentName = (string)AccessTools.Method(typeof(Fermenter), "GetContentName").Invoke(__instance, new object[] { });
                         if ((bool)AccessTools.Field(typeof(Fermenter), "m_exposed").GetValue(__instance))
                         {
-                            __result =  Localization.instance.Localize(__instance.m_name + " ( " + contentName + ", $piece_fermenter_exposed )");
+                            __result = Localization.instance.Localize(__instance.m_name + " ( " + contentName + ", $piece_fermenter_exposed )");
                         }
 
                         if (!useTime.Value)
