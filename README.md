@@ -1,6 +1,9 @@
 # FermenterPercentage
 Small mod only add percentage of how much have already fermented.
 
+### Support
+If you would like to support me you can do it here: https://streamlabs.com/ltmadness/tip
+
 ### Changes
 
 v0.0.3
