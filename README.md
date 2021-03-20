@@ -4,7 +4,7 @@ Small mod only add percentage of how much have already fermented.
 ![Alt Text](https://s4.gifyu.com/images/percent.gif)
 ![Alt Text](https://s4.gifyu.com/images/fermenter-progress-bar.gif)
 ### Support
-If you would like to support me you can do it here: https://streamlabs.com/ltmadness/tip
+If you would like to support me you can do it here: https://www.patreon.com/LTmadness
 
 ### Changes
 v0.0.5
