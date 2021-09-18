@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace FermenterPercentage
 {
 
-    [BepInPlugin(GUID, "Fermenter Percentage", "0.0.5")]
+    [BepInPlugin(GUID, "Fermenter Percentage", "0.0.6")]
     public class FermenterPercentage : BaseUnityPlugin
     {
         private const string GUID = "org.ltmadness.valheim.fermenterpercentage";
