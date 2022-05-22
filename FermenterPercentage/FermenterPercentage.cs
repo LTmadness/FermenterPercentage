@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace FermenterPercentage
 {
 
-    [BepInPlugin(GUID, "Fermenter Percentage", "0.0.6")]
+    [BepInPlugin(GUID, "Fermenter Percentage", "1.0.0")]
     public class FermenterPercentage : BaseUnityPlugin
     {
         private const string GUID = "org.ltmadness.valheim.fermenterpercentage";
@@ -30,7 +30,6 @@ namespace FermenterPercentage
             Harmony.CreateAndPatchAll(typeof(FermenterPercentage), GUID);
         }
 
-
         [HarmonyPatch(typeof(Fermenter), "GetHoverText")]
         [HarmonyPostfix]
         public static void GetHoverText_light(ref Fermenter __instance, ref string __result)
@@ -46,8 +45,9 @@ namespace FermenterPercentage
                 DateTime d = new DateTime(m_nview.GetZDO().GetLong("StartTime", 0L));
                 if (d.Ticks != 0L)
                 {
-                    double time = (ZNet.instance.GetTime() - d).TotalSeconds;
-                    if (!time.Equals(-1) && time < (double)__instance.m_fermentationDuration)
+                    double timePassed = (ZNet.instance.GetTime() - d).TotalSeconds;
+
+                    if (!timePassed.Equals(-1) && timePassed < (double)__instance.m_fermentationDuration)
                     {
 
                         if ((bool)AccessTools.Field(typeof(Fermenter), "m_exposed").GetValue(__instance))
@@ -59,7 +59,7 @@ namespace FermenterPercentage
                             return;
                         }
 
-                        float percentage = (float)(time / (double)__instance.m_fermentationDuration * 100);
+                        float percentage = (float)(timePassed / (double)__instance.m_fermentationDuration * 100);
                         int perc = (int)percentage;
 
                         if (hudData == null && !ProgressBar.OFF.Equals(progressBar.Value))
@@ -68,7 +68,7 @@ namespace FermenterPercentage
 
                             hudData.m_gui = UnityEngine.Object.Instantiate<GameObject>(EnemyHud.instance.m_baseHud, EnemyHud.instance.m_hudRoot.transform);
                             hudData.m_gui.SetActive(true);
-                            hudData.m_gui.transform.SetPositionAndRotation(Hud.instance.m_crosshair.transform.position, new Quaternion());
+                            hudData.m_gui.transform.position = Hud.instance.m_crosshair.transform.position;
                             hudData.m_healthRoot = hudData.m_gui.transform.Find("Health").gameObject;
                             hudData.m_healthFast = hudData.m_healthRoot.transform.Find("health_fast").GetComponent<GuiBar>();
                             hudData.m_healthSlow = hudData.m_healthRoot.transform.Find("health_slow").GetComponent<GuiBar>();
@@ -86,7 +86,7 @@ namespace FermenterPercentage
 
                         if (hudData != null)
                         {
-                            hudData.m_gui.transform.SetPositionAndRotation(Hud.instance.m_crosshair.transform.position, new Quaternion());
+                            hudData.m_gui.transform.position = Hud.instance.m_crosshair.transform.position;
                             hudData.m_gui.SetActive(true);
                             if (ProgressBar.YELLOW.Equals(progressBar.Value))
                             {
@@ -112,11 +112,7 @@ namespace FermenterPercentage
                             }
                             else if (ProgressText.TIME.Equals(progressText.Value))
                             {
-                                double left = (double)__instance.m_fermentationDuration * percentage;
-                                int min = (int)Math.Floor(left / 60);
-                                int sec = ((int)left) % 60;
-
-                                __result = __result.Replace(")", $"<color={colorHex}>{min}m {sec}s</color> )");
+                                __result = __result.Replace(")", getTimeResult(__instance, timePassed, colorHex));
                             }
                             return;
                         }
@@ -128,11 +124,7 @@ namespace FermenterPercentage
                             }
                             else if (ProgressText.TIME.Equals(progressText.Value))
                             {
-                                double left = ((double)__instance.m_fermentationDuration) - time;
-                                int min = (int)Math.Floor(left / 60);
-                                int sec = ((int)left) % 60;
-
-                                __result = __result.Replace(")", $"{min}m {sec}s )");
+                                __result = __result.Replace(")", getTimeResult(__instance, timePassed, null));
 
                             }
                             return;
@@ -162,6 +154,20 @@ namespace FermenterPercentage
                 }
             }
 
+        }
+
+        public static string getTimeResult(Fermenter __instance, double timePassed, string colorHex)
+        {
+            double left = ((double)__instance.m_fermentationDuration) - timePassed;
+            int min = (int)Math.Floor(left / 60);
+            int sec = ((int)left) % 60;
+
+            if (colorHex != null)
+            {
+                return $"<color={colorHex}>{min}m {sec}s</color> )";
+            }
+
+            return String.Format($"{min}m {sec}s )");
         }
 
         private class HudData
